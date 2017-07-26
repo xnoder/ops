@@ -5,8 +5,8 @@
 
   vars:
     droplets:
-      - { name: ci01-fra1 }
-      - { name: mox01-fra1, size: '512mb' }
+      - { name: ci }
+      - { name: box, size: '1gb' }
 
   tasks:
     - name: Create droplets
