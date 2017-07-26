@@ -1,0 +1,5 @@
+---
+packages:
+  - { name: yum-utils }
+  - { name: device-mapper-persistent-data }
+  - { name: lvm2 }

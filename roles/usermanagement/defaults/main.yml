@@ -1,0 +1,3 @@
+---
+defined_users:
+  - { name: 'paul.stevens', groups: 'wheel,docker' }

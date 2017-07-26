@@ -1,0 +1,23 @@
+---
+- name: Install Docker CE dependencies
+  yum:
+    name: "{{ item.name }}"
+    state: latest
+  with_items:
+    - "{{ packages }}"
+
+- name: Install Docker CE (Edge) from RPM
+  yum:
+    name: https://download.docker.com/linux/centos/7/x86_64/edge/Packages/docker-ce-17.06.0.ce-1.el7.centos.x86_64.rpm
+    state: present
+
+- name: Start and enable Docker using systemd
+  systemd:
+    name: docker
+    state: started
+    enabled: True
+
+- name: Create the docker group
+  group:
+    name: docker
+    state: present

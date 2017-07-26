@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    droplets:
+      - { name: ci01-fra1 }
+      - { name: mox01-fra1, size: '512mb' }
+
+  tasks:
+    - name: Create droplets
+      digital_ocean:
+        state: "{{ item.state | default('present') }}"
+        command: droplet
+        name: "{{ item.name }}"
+        private_networking: yes
+        size_id: "{{ item.size | default('2gb') }}"
+        image_id: "{{ item.image | default('centos-7-x64') }}"
+        region_id: "{{ item.region | default('fra1') }}"
+        ssh_key_ids: "{{ item.ssh_key | default('974078') }}"
+        unique_name: yes
+      register: do
+      with_items: "{{ droplets }}"

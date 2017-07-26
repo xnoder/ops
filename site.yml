@@ -1,0 +1,4 @@
+---
+- include: updates.yml
+- include: docker.yml
+- include: users.yml
