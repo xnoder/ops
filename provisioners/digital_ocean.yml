@@ -6,7 +6,10 @@
   vars:
     droplets:
       - { name: ci }
-      - { name: box, size: '1gb' }
+      - { name: sh, size: '512mb'}
+      - { name: ws }
+    initial_user:
+      - { name: 'paul.stevens', groups: 'wheel' }
 
   tasks:
     - name: Create droplets
@@ -20,5 +23,5 @@
         region_id: "{{ item.region | default('fra1') }}"
         ssh_key_ids: "{{ item.ssh_key | default('974078') }}"
         unique_name: yes
-      register: do
+      register: created_droplets
       with_items: "{{ droplets }}"

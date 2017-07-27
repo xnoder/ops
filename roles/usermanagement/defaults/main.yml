@@ -1,3 +1,5 @@
 ---
 defined_users:
-  - { name: 'paul.stevens', groups: 'wheel,docker' }
+  - name: 'paul.stevens'
+    groups: 'wheel,docker'
+    # Be good lad and change your password immediately, eh?

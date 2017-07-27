@@ -1,0 +1,9 @@
+---
+- name: Harden systems using according to STIG guide
+  hosts: all
+  remote_user: root
+  vars:
+    security_enable_firewalld: no
+    security_rhel7_initialize_aide: no
+  roles:
+    - ansible-hardening
